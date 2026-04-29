@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBS Intervention - Nettoyage, Sécurité & Gestion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="RBS Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">RBS INTERVENTION</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="active">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">À propos</a>
+                <a href="contact.html">Contact</a>
+               
+            </div>
+            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section avec images en arrière-plan qui défilent -->
+    <section class="hero-fixed">
+        <div class="hero-background-slider">
+    <div class="bg-slide active" style="background-image: url('images/slide 1.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('images/slide 2.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('images/slide 3.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content-fixed">
+            <h1 class="fade-up">RBS INTERVENTION</h1>
+            <p class="hero-subtitle fade-up delay-1">Votre partenaire de confiance</p>
+            <p class="hero-desc fade-up delay-2">pour la gestion et l'entretien de vos biens</p>
+           
+            <div class="hero-buttons fade-up delay-3">
+                <a href="devis.html" class="btn-primary">Demandez un devis</a>
+                <a href="services.html" class="btn-outline">Nos services</a>
+            </div>
+        </div>
+        
+        
+        <!-- Dots -->
+        <div class="slider-dots">
+            <span class="dot-bg active" onclick="currentBgSlide(1)"></span>
+            <span class="dot-bg" onclick="currentBgSlide(2)"></span>
+            <span class="dot-bg" onclick="currentBgSlide(3)"></span>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-home">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <p class="section-subtitle">Des solutions fiables, rapides et adaptées à vos besoins</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="" alt="Sécurité">
+                        
+                    </div>
+                    <h3>Surveillance & contrôle</h3>
+                    <p>Sécurité 24/7 pour vos biens et vos collaborateurs.</p>
+                    <a href="services.html#security" class="service-link">En savoir plus →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="" alt="Recouvrement">
+                        
+                    </div>
+                    <h3>Recouvrement</h3>
+                    <p>Recouvrement de créances et gestion des impayés.</p>
+                    <a href="services.html#collection" class="service-link">En savoir plus →</a>
+                </div>
+                   <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="" alt="Syndic">
+                     
+                    </div>
+                    <h3>Gestion de syndic</h3>
+                    <p>Administration et gestion complète de vos copropriétés.</p>
+                    <a href="services.html#syndic" class="service-link">En savoir plus →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/cleaning.jpg" alt="Nettoyage">
+                        
+                    </div>
+                    <h3>Nettoyage professionnel</h3>
+                    <p>Entretien régulier ou ponctuel de vos espaces intérieurs et extérieurs.</p>
+                    <a href="services.html#cleaning" class="service-link">En savoir plus →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/gardening.jpg" alt="Jardinage">
+            
+                    </div>
+                    <h3>Jardinage & espaces verts</h3>
+                    <p>Création et maintenance de vos jardins, espaces verts et paysagisme.</p>
+                    <a href="services.html#gardening" class="service-link">En savoir plus →</a>
+                </div>
+               
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="why-us-content">
+                <div class="why-us-text">
+                    <h2>Pourquoi choisir RBS Intervention ?</h2>
+                    <p>Forts de plusieurs années d'expérience dans le domaine de la gestion immobilière et des services aux entreprises, nous mettons notre savoir-faire à votre service pour garantir la propreté, la sécurité et la bonne gestion de vos biens.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <span>✓</span>
+                            <div>
+                                <h4>Expertise reconnue</h4>
+                                <p>Des professionnels qualifiés à votre service</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <span>✓</span>
+                            <div>
+                                <h4>Intervention rapide</h4>
+                                <p>Réactivité et efficacité garanties</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <span>✓</span>
+                            <div>
+                                <h4>Solutions personnalisées</h4>
+                                <p>Des services adaptés à vos besoins spécifiques</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <span>✓</span>
+                            <div>
+                                <h4>Devis gratuit</h4>
+                                <p>Sans engagement, sous 24h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-us-image">
+                    <img src="" alt="Équipe RBS">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Besoin d'un service professionnel ?</h2>
+            <p>Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé</p>
+            <a href="contact.html" class="btn-primary">Contactez-nous</a>
+        </div>
+    </section>
+ <div class="devis-float">
+        <a href="devis.html" class="btn-devis-float">
+             Demander un devis gratuit
+        </a>
+    </div>
+  <!-- Footer style gardtif.ma -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Colonne 1: Logo & Description -->
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                    <h3>RBS INTERVENTION</h3>
+                </div>
+                <p>Votre partenaire de confiance pour la gestion et l'entretien de vos biens. Des solutions fiables, rapides et adaptées à vos besoins.</p>
+                
+            </div>
+
+            <!-- Colonne 2: Liens rapides -->
+            <div class="footer-col">
+                <h4>Liens rapides</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Nos services</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="devis.html">Demander un devis</a></li>
+                </ul>
+            </div>
+
+            <!-- Colonne 3: Coordonnées -->
+            <div class="footer-col">
+                <h4>Nous contacter</h4>
+                <ul class="footer-contact">
+                    <li>📞 <a href="tel:+212667757472">0667 75 74 72</a></li>
+                    <li>✉️ <a href="mailto:Rbsintervention@gmail.com">Rbsintervention@gmail.com</a></li>
+                    <li>📍 44 boulevard lalla yacout 4eme étage N°A Casablanca</li>
+                </ul>
+            </div>
+
+            <!-- Colonne 4: Carte Google Maps -->
+            <div class="footer-col">
+                <h4>Notre bureau</h4>
+                <div class="footer-map">
+                    <iframe 
+                        src="https://www.google.com/maps/place/The+English+Institute/@33.5911869,-7.6186628,17z/data=!4m16!1m9!3m8!1s0xda7d29dcb4d95f1:0x7de928eb13cee147!2sThe+English+Institute!8m2!3d33.5911825!4d-7.6140494!9m1!1b1!16s%2Fg%2F11ckr666_g!3m5!1s0xda7d29dcb4d95f1:0x7de928eb13cee147!8m2!3d33.5911825!4d-7.6140494!16s%2Fg%2F11ckr666_g?entry=ttu&g_ep=EgoyMDI2MDQyNy4wIKXMDSoASAFQAw%3D%3D" 
+                        width="100%" 
+                        height="150" 
+                        style="border:0; border-radius: 10px;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <p class="map-address">boulevard lalla yacout, Casablanca, Maroc</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2024 RBS Intervention - Tous droits réservés</p>
+                <p class="footer-credit">Développé par <span>RBS Intervention</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/212667757472" class="whatsapp-btn" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

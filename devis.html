@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBS Intervention - Demande de devis</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="RBS Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">RBS INTERVENTION</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">À propos</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Demande de devis gratuit</h1>
+            <p>Remplissez le formulaire et nous vous répondrons dans les plus brefs délais</p>
+        </div>
+    </div>
+
+    <section class="devis-page">
+        <div class="container">
+            <div class="devis-form-container">
+                <form id="devisForm" class="devis-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom *</label>
+                            <input type="text" id="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Prénom *</label>
+                            <input type="text" id="prenom" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Raison sociale</label>
+                        <input type="text" id="raisonSociale" placeholder="Nom de l'entreprise (si applicable)">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone *</label>
+                            <input type="tel" id="telephone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Adresse *</label>
+                        <input type="text" id="adresse" placeholder="Adresse complète" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Ville *</label>
+                        <input type="text" id="ville" placeholder="Ville" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Service souhaité *</label>
+                        <select id="service" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option>Surveillance & contrôle</option>
+                            <option>Recouvrement de créances</option>
+                            <option>Gestion de syndic</option>
+                            <option>Nettoyage professionnel</option>
+                            <option>Jardinage & espaces verts</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Type de bien</label>
+                            <select id="typeBien">
+                                <option>Appartement</option>
+                                <option>Maison / Villa</option>
+                                <option>Bureau / Local commercial</option>
+                                <option>Immeuble / Copropriété</option>
+                                <option>Entreprise / Usine</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Surface (m²)</label>
+                            <input type="number" id="surface" placeholder="Ex: 120">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message / Besoins spécifiques *</label>
+                        <textarea id="message" rows="5" placeholder="Décrivez votre projet en détail..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Souhaitez-vous être rappelé ?</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="radio" name="rappel" value="oui"> Oui
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="radio" name="rappel" value="non" checked> Non
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" style="width:100%; padding: 1rem;">
+                        Envoyer ma demande de devis 📩
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #666;">
+                        * Champs obligatoires - Votre demande sera traitée sous 24h
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                        <h3>RBS INTERVENTION</h3>
+                    </div>
+                    <p>Votre partenaire de confiance pour la gestion et l'entretien de vos biens.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Nos services</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="devis.html">Demander un devis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nous contacter</h4>
+                    <ul class="footer-contact">
+                        <li>📞 <a href="tel:+212667757472">0667 75 74 72</a></li>
+                        <li>✉️ <a href="mailto:Rbsintervention@gmail.com">Rbsintervention@gmail.com</a></li>
+                        <li>📍 44 boulevard lalla yacout 4eme étage N°A Casablanca</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Notre bureau</h4>
+                    <div class="footer-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.875331755846!2d-6.315463684792884!3d33.89586138064548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda39d1b6a4b8c91%3A0x8b5e9e2b3c4d5e6f!2sTiflet%2C%20Morocco!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s" 
+                            width="100%" 
+                            height="150" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <p class="map-address">boulevard lalla yacout, Casablanca, Maroc</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>© 2024 RBS Intervention - Tous droits réservés</p>
+                    <p class="footer-credit">Développé par <span>RBS Intervention</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/212667757472" class="whatsapp-btn" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    </a>
+
+    <script src="script.js"></script>
+    <script>
+        // Formulaire de devis qui envoie vers WhatsApp
+        const whatsappNumber = "212667757472";
+        
+        document.getElementById('devisForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Champs obligatoires
+            const nom = document.getElementById('nom').value;
+            const prenom = document.getElementById('prenom').value;
+            const email = document.getElementById('email').value;
+            const telephone = document.getElementById('telephone').value;
+            const adresse = document.getElementById('adresse').value;
+            const ville = document.getElementById('ville').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Champs optionnels
+            const raisonSociale = document.getElementById('raisonSociale').value;
+            const typeBien = document.getElementById('typeBien').value;
+            const surface = document.getElementById('surface').value;
+            const rappel = document.querySelector('input[name="rappel"]:checked').value;
+            
+            let whatsappMessage = "🔵 *NOUVELLE DEMANDE DE DEVIS - RBS INTERVENTION* 🔵%0A%0A";
+            whatsappMessage += "*📋 INFORMATIONS CLIENT :*%0A";
+            whatsappMessage += `👤 Nom et Prénom: ${nom} ${prenom}%0A`;
+            if (raisonSociale) whatsappMessage += `🏢 Raison sociale: ${raisonSociale}%0A`;
+            whatsappMessage += `📧 Email: ${email}%0A`;
+            whatsappMessage += `📞 Téléphone: ${telephone}%0A`;
+            whatsappMessage += `📍 Adresse: ${adresse}%0A`;
+            whatsappMessage += `🏙️ Ville: ${ville}%0A%0A`;
+            whatsappMessage += "*🎯 INFORMATIONS PROJET :*%0A";
+            whatsappMessage += `🎯 Service: ${service}%0A`;
+            whatsappMessage += `🏷️ Type de bien: ${typeBien}%0A`;
+            if (surface) whatsappMessage += `📐 Surface: ${surface} m²%0A`;
+            whatsappMessage += `📝 Message: ${message}%0A%0A`;
+            whatsappMessage += "*📞 RAPPEL :*%0A";
+            whatsappMessage += `${rappel === 'oui' ? '✅ Souhaite être rappelé' : '❌ Ne souhaite pas être rappelé'}%0A%0A`;
+            whatsappMessage += "---%0A";
+            whatsappMessage += "_Devis demandé depuis le site RBS Intervention_";
+            
+            alert("✓ Redirection vers WhatsApp... Votre demande de devis va être envoyée.");
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+            
+            setTimeout(() => {
+                document.getElementById('devisForm').reset();
+            }, 2000);
+        });
+    </script>
+    <style>
+        .devis-page {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        .devis-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .devis-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1F2937;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .devis-form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</body>
+</html>
