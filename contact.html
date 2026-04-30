@@ -19,7 +19,6 @@
                 <a href="services.html">Services</a>
                 <a href="about.html">À propos</a>
                 <a href="contact.html" class="active">Contact</a>
-                
             </div>
             <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
         </div>
@@ -31,54 +30,67 @@
             <p>Nous sommes à votre disposition pour répondre à toutes vos questions</p>
         </div>
     </div>
-
+<!-- Les 3 cartes d'information avec SVG -->
+<div class="contact-cards">
+    <!-- Carte Téléphone -->
+    <div class="info-card">
+        <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0057B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </div>
+        <h3>Téléphone</h3>
+        <p>0667 75 74 72</p>
+    </div>
+    
+    <!-- Carte Email -->
+    <div class="info-card">
+        <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0057B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+            </svg>
+        </div>
+        <h3>Email</h3>
+        <p>Rbsintervention@gmail.com</p>
+    </div>
+    
+    <!-- Carte Adresse -->
+    <div class="info-card">
+        <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0057B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+            </svg>
+        </div>
+        <h3>Adresse</h3>
+        <p>44 boulevard lalla yacout, 4ème étage N°A, Casablanca</p>
+    </div>
+</div>
     <section class="contact-page">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-info-card">
-                    <h2>Nos coordonnées</h2>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <h4>Téléphone / WhatsApp</h4>
-                            <p><strong>0667 75 74 72</strong></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>Rbsintervention@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h4>Adresse</h4>
-                            <p>Casablanca, Maroc</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🕐</div>
-                        <div>
-                            <h4>Horaires</h4>
-                            <p>Lundi - Vendredi : 9h - 18h<br>Samedi : 9h - 13h</p>
-                        </div>
-                    </div>
-                    <div class="contact-item" style="margin-top: 1rem;">
-                        <div class="contact-icon">💬</div>
-                        <div>
-                            <h4>WhatsApp direct</h4>
-                            <a href="https://wa.me/212718390655" target="_blank" style="color: var(--primary-blue);">Cliquez ici pour nous écrire sur WhatsApp →</a>
-                        </div>
+                <!-- Google Maps à gauche -->
+                <div class="contact-map-card">
+                    <h2>Notre emplacement</h2>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106528.35058853656!2d-7.691501889276219!3d33.572500042410674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda39d326e8abf3d%3A0x3b8e5e9c2d4f6a8b!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+                            width="100%" 
+                            height="600" 
+                            style="border:0; border-radius: 15px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
                     </div>
                 </div>
 
+                <!-- Formulaire à droite -->
                 <div class="contact-form-card">
                     <h2>Envoyez-nous un message</h2>
                     
                     <div id="successMessage" style="display:none; background:#4CAF50; color:white; padding:1rem; border-radius:8px; margin-bottom:1rem;">
-                        ✓ Message envoyé avec succès ! Vous allez être redirigé vers WhatsApp.
+                        ✓ Message envoyé avec succès !
                     </div>
                     <div id="errorMessage" style="display:none; background:#f44336; color:white; padding:1rem; border-radius:8px; margin-bottom:1rem;">
                         ❌ Une erreur s'est produite. Veuillez réessayer.
@@ -98,67 +110,49 @@
                             <input type="tel" id="telephone" placeholder="Téléphone" required>
                         </div>
                         <div class="form-group">
-                            <select id="service" required>
-                                <option value="">Service qui vous intéresse</option>
-                                <option>Nettoyage professionnel</option>
-                                <option>Jardinage & espaces verts</option>
-                                <option>Gestion de syndic</option>
-                                <option>Recouvrement</option>
-                                <option>Surveillance & contrôle</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <textarea id="message" rows="5" placeholder="Votre message" required></textarea>
                         </div>
                         <button type="submit" id="submitBtn" class="btn-primary" style="width:100%">
                             Envoyer le message 📩
                         </button>
                     </form>
-                    
-                    <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #666;">
-                        Votre message sera enregistré et nous vous répondrons rapidement.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
-<!-- Footer style gardtif.ma -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <!-- Colonne 1: Logo & Description -->
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <img src="logo.png" alt="Logo" class="footer-logo-img" onerror="this.style.display='none'">
-                    <h3>RBS INTERVENTION</h3>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                        <h3>RBS INTERVENTION</h3>
+                    </div>
+                    <p>Votre partenaire de confiance pour la gestion et l'entretien de vos biens.</p>
                 </div>
-                <p>Votre partenaire de confiance pour la gestion et l'entretien de vos biens. Des solutions fiables, rapides et adaptées à vos besoins.</p>
-                
-            </div>
 
-            <!-- Colonne 2: Liens rapides -->
-            <div class="footer-col">
-                <h4>Liens rapides</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="services.html">Nos services</a></li>
-                    <li><a href="about.html">À propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="devis.html">Demander un devis</a></li>
-                </ul>
-            </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Nos services</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
 
-            <!-- Colonne 3: Coordonnées -->
-            <div class="footer-col">
-                <h4>Nous contacter</h4>
-                <ul class="footer-contact">
-                    <li>📞 <a href="tel:+212667757472">0667 75 74 72</a></li>
-                    <li>✉️ <a href="mailto:Rbsintervention@gmail.com">Rbsintervention@gmail.com</a></li>
-                    <li>📍 44 boulevard lalla yacout 4eme étage N°A Casablanca</li>
-                </ul>
-            </div>
+                <div class="footer-col">
+                    <h4>Nous contacter</h4>
+                    <ul class="footer-contact">
+                        <li>📞 <a href="tel:+212667757472">0667 75 74 72</a></li>
+                        <li>✉️ <a href="mailto:Rbsintervention@gmail.com">Rbsintervention@gmail.com</a></li>
+                        <li>📍 44 boulevard lalla yacout, Casablanca</li>
+                    </ul>
+                </div>
 
-            <!-- Colonne 4: Carte Google Maps -->
+               <!-- Colonne 4: Carte Google Maps -->
             <div class="footer-col">
                 <h4>Notre bureau</h4>
                 <div class="footer-map">
@@ -174,17 +168,18 @@
                 <p class="map-address">boulevard lalla yacout, Casablanca, Maroc</p>
             </div>
         </div>
+            </div>
 
-        <div class="footer-bottom">
-            <div class="footer-bottom-content">
-                <p>© 2024 RBS Intervention - Tous droits réservés</p>
-                <p class="footer-credit">Développé par <span>RBS Intervention</span></p>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>© 2024 RBS Intervention - Tous droits réservés</p>
+                    <p class="footer-credit">Développé par <span>RBS Intervention</span></p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-    <a href="https://wa.me/212718390655" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/212667757472" class="whatsapp-btn" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
     </a>
 
@@ -192,16 +187,12 @@
     
     <script>
         // Configuration Google Sheets
-        // APRES AVOIR CREE LE Google Apps Script, METTEZ VOTRE URL ICI
         const GOOGLE_SHEETS_URL = "VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI";
-        
-        // Numéro WhatsApp de l'entreprise
-        const whatsappNumber = "212718390655";
+        const whatsappNumber = "212667757472";
         
         document.getElementById('contactForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             
-            // Récupérer les valeurs
             const formData = {
                 nom: document.getElementById('nom').value,
                 email: document.getElementById('email').value,
@@ -211,43 +202,33 @@
                 date: new Date().toLocaleString('fr-FR')
             };
             
-            // Afficher loading
             document.getElementById('loadingMessage').style.display = 'block';
             document.getElementById('successMessage').style.display = 'none';
             document.getElementById('errorMessage').style.display = 'none';
             
-            // Désactiver le bouton
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Envoi en cours...';
             
             try {
-                // 1. Envoyer à Google Sheets
-                const response = await fetch(GOOGLE_SHEETS_URL, {
+                await fetch(GOOGLE_SHEETS_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
                 
-                // Cacher loading
                 document.getElementById('loadingMessage').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
                 
-                // 2. Message automatique pour le client sur WhatsApp
-                const autoMessage = `Bonjour ${formData.nom},%0A%0A✅ Nous avons bien reçu votre message concernant "${formData.service}".%0A%0A📋 Récapitulatif :%0A- Nom : ${formData.nom}%0A- Téléphone : ${formData.telephone}%0A- Message : ${formData.message}%0A%0A📞 Notre équipe vous contactera dans les plus brefs délais sur ce numéro WhatsApp.%0A%0AMerci de votre confiance !%0A%0A*RBS Intervention*%0AService Client`;
+                const autoMessage = `Bonjour ${formData.nom},%0A%0A✅ Nous avons bien reçu votre message concernant "${formData.service}".%0A%0A📋 Récapitulatif :%0A- Nom : ${formData.nom}%0A- Téléphone : ${formData.telephone}%0A- Message : ${formData.message}%0A%0A📞 Notre équipe vous contactera dans les plus brefs délais.%0A%0AMerci de votre confiance !`;
                 
-                // Ouvrir WhatsApp avec message automatique
                 const whatsappUrl = `https://wa.me/${formData.telephone.replace(/\s/g, '').replace(/^0/, '212')}?text=${autoMessage}`;
                 
-                // Rediriger vers WhatsApp après 2 secondes
                 setTimeout(() => {
                     window.open(whatsappUrl, '_blank');
                 }, 2000);
                 
-                // Réinitialiser le formulaire
                 document.getElementById('contactForm').reset();
                 
             } catch (error) {
@@ -258,7 +239,6 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Envoyer le message 📩';
                 
-                // Cacher les messages après 5 secondes
                 setTimeout(() => {
                     document.getElementById('successMessage').style.display = 'none';
                     document.getElementById('errorMessage').style.display = 'none';

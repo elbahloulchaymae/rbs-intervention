@@ -742,7 +742,7 @@ html {
 .contact-info-card h2,
 .contact-form-card h2 {
     margin-bottom: 1.5rem;
-    color: var(--primary-blue);
+    color: black;
 }
 
 .contact-item {
@@ -1190,4 +1190,89 @@ body.rtl .service-detail.reverse {
 
 body.rtl .service-detail.reverse .service-detail-content {
     direction: rtl;
+}
+/* ========== LES 3 CARTES AVEC SVG ========== */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.info-card {
+    background: white;
+    padding: 1.8rem 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eef2f6;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-color: var(--primary-blue);
+}
+
+.card-icon {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card-icon svg {
+    transition: transform 0.3s;
+}
+
+.info-card:hover .card-icon svg {
+    transform: scale(1.1);
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    color: var(--dark-text);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.info-card p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+.info-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.info-card a:hover {
+    gap: 10px;
+    color: var(--dark-blue);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contact-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-card {
+        padding: 1.3rem;
+    }
 }
