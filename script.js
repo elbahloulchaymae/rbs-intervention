@@ -124,3 +124,81 @@ if (contactForm) {
 }
 
 setActiveNavLink();
+// ========== ANIMATION AU SCROLL ==========
+// Fonction pour animer les éléments quand ils apparaissent
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.service-card, .feature, .stat-card, .info-card, .section-title, .contact-cards');
+    
+    elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight;
+        
+        if (elementPosition < screenPosition - 100) {
+            element.classList.add('animate-show');
+        }
+    });
+}
+
+// Ajouter la classe CSS pour l'animation
+const style = document.createElement('style');
+style.textContent = `
+    .service-card, .feature, .stat-card, .info-card, .contact-cards, .section-title {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.7s ease-out;
+    }
+    
+    .service-card.animate-show, 
+    .feature.animate-show, 
+    .stat-card.animate-show, 
+    .info-card.animate-show, 
+    .contact-cards.animate-show,
+    .section-title.animate-show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Délais différents pour les services */
+    .service-card:nth-child(1) { transition-delay: 0.1s; }
+    .service-card:nth-child(2) { transition-delay: 0.2s; }
+    .service-card:nth-child(3) { transition-delay: 0.3s; }
+    .service-card:nth-child(4) { transition-delay: 0.4s; }
+    .service-card:nth-child(5) { transition-delay: 0.5s; }
+`;
+document.head.appendChild(style);
+
+// Écouter le scroll
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+animateOnScroll();
+
+// ========== HOVER EFFETS AMÉLIORÉS AVEC JS ==========
+// Ajouter des effets supplémentaires au survol
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        const img = this.querySelector('.service-img-wrapper img');
+        if (img) {
+            img.style.transform = 'scale(1.08)';
+        }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        const img = this.querySelector('.service-img-wrapper img');
+        if (img) {
+            img.style.transform = 'scale(1)';
+        }
+    });
+});
+
+// Effet sur les boutons
+document.querySelectorAll('.btn-primary, .btn-outline, .service-link').forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
+console.log('✅ Animations et hover effects activés !');
