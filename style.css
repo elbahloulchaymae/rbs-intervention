@@ -1073,39 +1073,31 @@ html {
 /* Mobile (768px et moins) */
 @media (max-width: 768px) {
     /* ===== NAVBAR ===== */
-    .nav-links {
-        display: none;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 2rem;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        z-index: 999;
+    .navbar {
+        background: var(--white) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 0.3rem 0;
     }
     
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .nav-links a {
-        color: var(--dark-text) !important;
-        padding: 0.8rem 0;
-    }
-    
-    .mobile-menu {
-        display: block;
-    }
-    
+    /* Le texte RBS INTERVENTION toujours en bleu foncé et visible */
     .logo-text {
+        color: var(--primary-blue) !important;
         font-size: 0.9rem;
-        color: white !important;
+        font-weight: 700;
     }
     
-    .logo-img {
-        height: 45px;
+    /* S'assurer que le texte reste visible même quand on scroll */
+    .navbar.scrolled .logo-text {
+        color: var(--primary-blue) !important;
+    }
+    
+    /* L'icône menu aussi en bleu */
+    .mobile-menu {
+        color: var(--primary-blue) !important;
+    }
+    
+    .navbar.scrolled .mobile-menu {
+        color: var(--primary-blue) !important;
     }
     
     /* ===== HERO SECTION ===== */
