@@ -1073,39 +1073,6 @@ html {
 /* Mobile (768px et moins) */
 @media (max-width: 768px) {
     /* ===== NAVBAR ===== */
-    /* Fixer la navbar sur mobile - toujours visible sans cacher le contenu */
-    .navbar {
-        background: var(--white) !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        padding: 0.3rem 0;
-    }
-    
-    .logo-text {
-        color: var(--primary-blue) !important;
-        font-size: 0.85rem;
-    }
-    
-    .mobile-menu {
-        color: var(--primary-blue) !important;
-    }
-    
-    /* Ajouter un espace en haut du body pour compenser la navbar fixe */
-    body {
-        padding-top: 65px;
-    }
-    
-    /* Ajuster le hero section */
-    .hero-fixed {
-        margin-top: -65px;
-        padding-top: 65px;
-    }
-    
-    /* Ajuster la page header */
-    .page-header {
-        padding-top: 120px;
-        margin-top: -65px;
-    }
-    
     .nav-links {
         display: none;
         position: fixed;
@@ -1132,8 +1099,13 @@ html {
         display: block;
     }
     
+    .logo-text {
+        font-size: 0.9rem;
+        color: white !important;
+    }
+    
     .logo-img {
-        height: 40px;
+        height: 45px;
     }
     
     /* ===== HERO SECTION ===== */
@@ -1210,7 +1182,7 @@ html {
         margin: 0.5rem 1rem 1.5rem;
     }
     
-    /* ===== SERVICES DETAILS (page services) ===== */
+    /* ===== SERVICES DETAILS (page services) - TRÈS IMPORTANT ===== */
     .service-detail {
         display: flex;
         flex-direction: column;
