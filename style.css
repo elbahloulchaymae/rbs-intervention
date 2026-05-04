@@ -64,11 +64,11 @@ html {
 .logo-text {
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--dark-blue);
+    color: var(--white);
 }
 
 .navbar.scrolled .logo-text {
-    color: var(--primary-blue);
+    color: var(--dark-blue);
 }
 
 .nav-links {
