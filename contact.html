@@ -188,66 +188,64 @@
 
     <script src="script.js"></script>
     
-    <script>
-        // Configuration Google Sheets
-        const GOOGLE_SHEETS_URL = "VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI";
-        const whatsappNumber = "212667757472";
-        
-        document.getElementById('contactForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            
-            const formData = {
-                nom: document.getElementById('nom').value,
-                email: document.getElementById('email').value,
-                telephone: document.getElementById('telephone').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value,
-                date: new Date().toLocaleString('fr-FR')
-            };
-            
-            document.getElementById('loadingMessage').style.display = 'block';
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('errorMessage').style.display = 'none';
-            
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Envoi en cours...';
-            
-            try {
-                await fetch(GOOGLE_SHEETS_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                
-                document.getElementById('loadingMessage').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-                
-                const autoMessage = `Bonjour ${formData.nom},%0A%0A✅ Nous avons bien reçu votre message concernant "${formData.service}".%0A%0A📋 Récapitulatif :%0A- Nom : ${formData.nom}%0A- Téléphone : ${formData.telephone}%0A- Message : ${formData.message}%0A%0A📞 Notre équipe vous contactera dans les plus brefs délais.%0A%0AMerci de votre confiance !`;
-                
-                const whatsappUrl = `https://wa.me/${formData.telephone.replace(/\s/g, '').replace(/^0/, '212')}?text=${autoMessage}`;
-                
-                setTimeout(() => {
-                    window.open(whatsappUrl, '_blank');
-                }, 2000);
-                
-                document.getElementById('contactForm').reset();
-                
-            } catch (error) {
-                console.error('Erreur:', error);
-                document.getElementById('loadingMessage').style.display = 'none';
-                document.getElementById('errorMessage').style.display = 'block';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Envoyer le message 📩';
-                
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                    document.getElementById('errorMessage').style.display = 'none';
-                }, 5000);
-            }
-        });
-    </script>
+   <!-- EmailJS Library -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // Initialize EmailJS - عوّض PUBLIC_KEY ديالك
+  (function() {
+      emailjs.init("24t5n4iiE1MZvEBly");
+  })();
+
+  // Formulaire de contact
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours... ⏳';
+      
+      document.getElementById('loadingMessage').style.display = 'block';
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('errorMessage').style.display = 'none';
+      
+      const templateParams = {
+          from_name: document.getElementById('nom').value,
+          from_email: document.getElementById('email').value,
+          from_phone: document.getElementById('telephone').value,
+          message: document.getElementById('message').value,
+          to_name: 'RBS Intervention'
+      };
+      
+      emailjs.send('service_jkcm0df', 'template_rc16oq5', templateParams)
+          .then(function(response) {
+              console.log('Succès!', response);
+              document.getElementById('loadingMessage').style.display = 'none';
+              document.getElementById('successMessage').style.display = 'block';
+              document.getElementById('contactForm').reset();
+              
+              // WhatsApp confirmation au client
+              const clientPhone = document.getElementById('telephone').value;
+              const clientName = document.getElementById('nom').value;
+              setTimeout(() => {
+                  window.open(`https://wa.me/${clientPhone.replace(/\s/g, '').replace(/^0/, '212')}?text=Bonjour%20${encodeURIComponent(clientName)}%2C%20nous%20avons%20bien%20re%C3%A7u%20votre%20message.%20Notre%20%C3%A9quipe%20vous%20contactera%20rapidement.`, '_blank');
+              }, 2000);
+          })
+          .catch(function(error) {
+              console.error('Erreur:', error);
+              document.getElementById('loadingMessage').style.display = 'none';
+              document.getElementById('errorMessage').style.display = 'block';
+          })
+          .finally(function() {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+              setTimeout(() => {
+                  document.getElementById('successMessage').style.display = 'none';
+                  document.getElementById('errorMessage').style.display = 'none';
+              }, 5000);
+          });
+  });
+</script>
 </body>
 </html>

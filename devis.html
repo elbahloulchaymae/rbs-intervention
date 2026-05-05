@@ -267,5 +267,61 @@
             }
         }
     </style>
+    <!-- EmailJS Library -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // Initialize EmailJS - عوّض PUBLIC_KEY ديالك
+  (function() {
+      emailjs.init("24t5n4iiE1MZvEBly");
+  })();
+
+  // Formulaire de devis
+  document.getElementById('devisForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const submitBtn = document.getElementById('devisForm').querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours... ⏳';
+      
+      const rappel = document.querySelector('input[name="rappel"]:checked').value;
+      
+      const templateParams = {
+          full_name: document.getElementById('nom').value + ' ' + document.getElementById('prenom').value,
+          company: document.getElementById('raisonSociale').value || 'Non spécifié',
+          email: document.getElementById('email').value,
+          phone: document.getElementById('telephone').value,
+          address: document.getElementById('adresse').value,
+          city: document.getElementById('ville').value,
+          service: document.getElementById('service').value,
+          property_type: document.getElementById('typeBien').value,
+          message: document.getElementById('message').value,
+          callback: rappel === 'oui' ? '✅ Oui, souhaite être rappelé' : '❌ Non',
+          to_name: 'RBS Intervention'
+      };
+      
+      emailjs.send('service_jkcm0df', 'template_av8b2ec', templateParams)
+          .then(function(response) {
+              console.log('Succès!', response);
+              alert('✓ Votre demande de devis a été envoyée avec succès! Nous vous contacterons dans les plus brefs délais.');
+              document.getElementById('devisForm').reset();
+              
+              // WhatsApp confirmation
+              const clientPhone = document.getElementById('telephone').value;
+              setTimeout(() => {
+                  window.open(`https://wa.me/${clientPhone.replace(/\s/g, '').replace(/^0/, '212')}?text=Bonjour%2C%20nous%20avons%20bien%20re%C3%A7u%20votre%20demande%20de%20devis.%20Notre%20%C3%A9quipe%20vous%20contactera%20rapidement.`, '_blank');
+              }, 1500);
+          })
+          .catch(function(error) {
+              console.error('Erreur:', error);
+              alert('❌ Une erreur s\'est produite. Veuillez réessayer.');
+          })
+          .finally(function() {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+          });
+  });
+</script>
 </body>
 </html>
