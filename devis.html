@@ -69,7 +69,21 @@
                     
                     <div class="form-group">
                         <label>Ville *</label>
-                        <input type="text" id="ville" placeholder="Ville" required>
+                        <select id="ville" required>
+                            <option value="">Sélectionnez votre ville</option>
+                            <option>Casablanca</option>
+                            <option>Rabat</option>
+                            <option>Marrakech</option>
+                            <option>Fès</option>
+                            <option>Tanger</option>
+                            <option>Agadir</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="autreVilleContainer" style="display:none;">
+                        <label>Précisez votre ville *</label>
+                        <input type="text" id="autreVille" placeholder="Entrez votre ville">
                     </div>
                     
                     <div class="form-group">
@@ -181,59 +195,93 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Button Flottant (optionnel, client peut cliquer) -->
     <a href="https://wa.me/212667757472" class="whatsapp-btn" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
     </a>
 
     <script src="script.js"></script>
+    
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <script>
-        // Formulaire de devis qui envoie vers WhatsApp
-        const whatsappNumber = "212667757472";
-        
+        // ========== 1. GESTION DE LA VILLE "AUTRE" ==========
+        const villeSelect = document.getElementById('ville');
+        const autreVilleContainer = document.getElementById('autreVilleContainer');
+        const autreVilleInput = document.getElementById('autreVille');
+
+        villeSelect.addEventListener('change', function () {
+            if (this.value === 'Autre') {
+                autreVilleContainer.style.display = 'block';
+                autreVilleInput.setAttribute('required', true);
+            } else {
+                autreVilleContainer.style.display = 'none';
+                autreVilleInput.removeAttribute('required');
+            }
+        });
+
+        // ========== 2. INITIALISATION EMAILJS ==========
+        (function() {
+            emailjs.init("24t5n4iiE1MZvEBly"); // Votre clé publique
+        })();
+
+        // ========== 3. ENVOI DU FORMULAIRE VERS EMAIL (PAS DE WHATSAPP AUTOMATIQUE) ==========
         document.getElementById('devisForm').addEventListener('submit', function(event) {
             event.preventDefault();
             
-            // Champs obligatoires
-            const nom = document.getElementById('nom').value;
-            const prenom = document.getElementById('prenom').value;
-            const email = document.getElementById('email').value;
-            const telephone = document.getElementById('telephone').value;
-            const adresse = document.getElementById('adresse').value;
-            const ville = document.getElementById('ville').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
+            // Récupérer la ville finale (si "Autre" est sélectionné)
+            let villeFinale = document.getElementById('ville').value;
+            if (villeFinale === 'Autre') {
+                villeFinale = document.getElementById('autreVille').value;
+                if (!villeFinale) {
+                    alert('❌ Veuillez préciser le nom de votre ville.');
+                    return;
+                }
+            }
             
-            // Champs optionnels
-            const raisonSociale = document.getElementById('raisonSociale').value;
-            const typeBien = document.getElementById('typeBien').value;
+            const submitBtn = document.getElementById('devisForm').querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours... ⏳';
+            
             const rappel = document.querySelector('input[name="rappel"]:checked').value;
             
-            let whatsappMessage = "🔵 *NOUVELLE DEMANDE DE DEVIS - RBS INTERVENTION* 🔵%0A%0A";
-            whatsappMessage += "*📋 INFORMATIONS CLIENT :*%0A";
-            whatsappMessage += `👤 Nom et Prénom: ${nom} ${prenom}%0A`;
-            if (raisonSociale) whatsappMessage += `🏢 Raison sociale: ${raisonSociale}%0A`;
-            whatsappMessage += `📧 Email: ${email}%0A`;
-            whatsappMessage += `📞 Téléphone: ${telephone}%0A`;
-            whatsappMessage += `📍 Adresse: ${adresse}%0A`;
-            whatsappMessage += `🏙️ Ville: ${ville}%0A%0A`;
-            whatsappMessage += "*🎯 INFORMATIONS PROJET :*%0A";
-            whatsappMessage += `🎯 Service: ${service}%0A`;
-            whatsappMessage += `🏷️ Type de bien: ${typeBien}%0A`;
-        
-            whatsappMessage += `📝 Message: ${message}%0A%0A`;
-            whatsappMessage += "*📞 RAPPEL :*%0A";
-            whatsappMessage += `${rappel === 'oui' ? '✅ Souhaite être rappelé' : '❌ Ne souhaite pas être rappelé'}%0A%0A`;
-            whatsappMessage += "---%0A";
-            whatsappMessage += "_Devis demandé depuis le site RBS Intervention_";
+            const templateParams = {
+                full_name: document.getElementById('nom').value + ' ' + document.getElementById('prenom').value,
+                company: document.getElementById('raisonSociale').value || 'Non spécifié',
+                email: document.getElementById('email').value,
+                phone: document.getElementById('telephone').value,
+                address: document.getElementById('adresse').value,
+                city: villeFinale,  // La ville corrigée
+                service: document.getElementById('service').value,
+                property_type: document.getElementById('typeBien').value,
+                message: document.getElementById('message').value,
+                callback: rappel === 'oui' ? '✅ Oui, souhaite être rappelé' : '❌ Non'
+            };
             
-            alert("✓ Redirection vers WhatsApp... Votre demande de devis va être envoyée.");
-            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-            
-            setTimeout(() => {
-                document.getElementById('devisForm').reset();
-            }, 2000);
+            emailjs.send('service_jkcm0df', 'template_av8b2ec', templateParams)
+                .then(function(response) {
+                    console.log('Succès!', response);
+                    alert('✓ Votre demande de devis a été envoyée avec succès! Nous vous contacterons dans les plus brefs délais.');
+                    document.getElementById('devisForm').reset();
+                    
+                    // Réinitialiser le champ "Autre ville"
+                    autreVilleContainer.style.display = 'none';
+                    autreVilleInput.value = '';
+                    document.getElementById('ville').value = '';
+                })
+                .catch(function(error) {
+                    console.error('Erreur:', error);
+                    alert('❌ Une erreur s\'est produite. Veuillez réessayer.');
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                });
         });
     </script>
+    
     <style>
         .devis-page {
             padding: 4rem 0;
@@ -267,61 +315,5 @@
             }
         }
     </style>
-    <!-- EmailJS Library -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-  // Initialize EmailJS - عوّض PUBLIC_KEY ديالك
-  (function() {
-      emailjs.init("24t5n4iiE1MZvEBly");
-  })();
-
-  // Formulaire de devis
-  document.getElementById('devisForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const submitBtn = document.getElementById('devisForm').querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Envoi en cours... ⏳';
-      
-      const rappel = document.querySelector('input[name="rappel"]:checked').value;
-      
-      const templateParams = {
-          full_name: document.getElementById('nom').value + ' ' + document.getElementById('prenom').value,
-          company: document.getElementById('raisonSociale').value || 'Non spécifié',
-          email: document.getElementById('email').value,
-          phone: document.getElementById('telephone').value,
-          address: document.getElementById('adresse').value,
-          city: document.getElementById('ville').value,
-          service: document.getElementById('service').value,
-          property_type: document.getElementById('typeBien').value,
-          message: document.getElementById('message').value,
-          callback: rappel === 'oui' ? '✅ Oui, souhaite être rappelé' : '❌ Non',
-          to_name: 'RBS Intervention'
-      };
-      
-      emailjs.send('service_jkcm0df', 'template_av8b2ec', templateParams)
-          .then(function(response) {
-              console.log('Succès!', response);
-              alert('✓ Votre demande de devis a été envoyée avec succès! Nous vous contacterons dans les plus brefs délais.');
-              document.getElementById('devisForm').reset();
-              
-              // WhatsApp confirmation
-              const clientPhone = document.getElementById('telephone').value;
-              setTimeout(() => {
-                  window.open(`https://wa.me/${clientPhone.replace(/\s/g, '').replace(/^0/, '212')}?text=Bonjour%2C%20nous%20avons%20bien%20re%C3%A7u%20votre%20demande%20de%20devis.%20Notre%20%C3%A9quipe%20vous%20contactera%20rapidement.`, '_blank');
-              }, 1500);
-          })
-          .catch(function(error) {
-              console.error('Erreur:', error);
-              alert('❌ Une erreur s\'est produite. Veuillez réessayer.');
-          })
-          .finally(function() {
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalText;
-          });
-  });
-</script>
 </body>
 </html>
